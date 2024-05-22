@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Create Post -->
+<br>
+<div class="container mb-5 p-5 " style="width: 40%;">
+    <h1>Create Post</h1>
+    <form action="{{ url_for('posts.new_post') }}" method="post" enctype="multipart/form-data" >
+        <div class="form-group mb-3">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required>
+        </div>
+        <div class="form-group mb-3 ">
+            <label for="category">Category</label>
+            <select class="form-select" id="category" name="category" aria-label="Default select example" required>
+                <option selected>Please pick a category</option>
+                <option value="Sports">Sports</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Health">Health</option>
+                <option value="Technology">Technology</option>
+                <option value="Science">Science</option>
+                <option value="Business">Business</option>
+                <option value="Sex and Relationship">Sex and Relationship</option>
+                <option value="Crime">Crime</option>
+                <option value="Politics">Politics</option>
+                <option value="Religion">Religion</option>
+                <option value="Education and Career">Education and Career</option>
+                <option value="Fashion and Beauty">Fashion and Beauty</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="3" placeholder="Enter Content" required></textarea>
+        </div>
+        <div class="form-group mb-3">
+            <!-- <label for="image">Image</label> -->
+            <input type="file" id="image" name="image" accept="image/*" >
+            <img {% if current_user.profile_picture %} src="{{ current_user.profile_pic }}" {% else %}
+            src="{{ url_for('static', filename='/assets/img/default.png') }}" {% endif %} alt="image"
+            class=" article-img profile_pic mt-3 border d-flex justify-content-center" id="display_picture"
+            style="width: 300px; height: 150px; border-radius: 10px; cursor: pointer; ">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Post</button>
+    </form>
+</div>
+<script>
+    // JavaScript
+    profile_icon = document.getElementById("display_picture");
+    profile_upload = document.getElementById("image");
+    profile_icon.addEventListener("click", function () {
+        profile_upload.click();
+    });
+    profile_upload.addEventListener("change", function () {
+        const selectedFile = this.files[0];
+        if (selectedFile) {
+            // Update the src attribute of the image element with the URL of the selected file
+            profile_icon.src = URL.createObjectURL(selectedFile);
+        }
+    });
+</script>
+{% endblock %}

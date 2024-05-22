@@ -31,7 +31,7 @@ from models import User, Post
 
 
 from main.routes import main
-app.register_blueprint(main)
-
 from posts.routes import posts
+
+app.register_blueprint(main)
 app.register_blueprint(posts)
