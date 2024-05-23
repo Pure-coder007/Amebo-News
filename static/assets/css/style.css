@@ -309,6 +309,8 @@ hr {
     width: 50px;
     height: 50px;
   }
+
+  
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .mb-90 {
@@ -318,6 +320,8 @@ hr {
     width: 50px;
     height: 50px;
   }
+
+  
 }
 .owl-carousel .owl-nav div {
   background: rgba(255, 255, 255, 0.8) none repeat scroll 0 0;
@@ -1687,7 +1691,7 @@ hr {
   position: relative;
   border-style: solid;
   border-width: 1px;
-  border-top-color: #ff2143;
+  border-top-color: purple;
   border-bottom-color: transparent;
   border-left-color: transparent;
   border-right-color: transparent;

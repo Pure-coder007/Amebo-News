@@ -7,6 +7,10 @@ from sqlalchemy import create_engine
 import pymysql, mysql.connector
 
 
+from flask_ckeditor import CKEditor
+
+app = Flask(__name__)
+
 
 
 secret_key = 'sdfghjkdsfghjsretyrew6786543ertyhjnfde5467uijhgfdszxhjuytrewsdfghjgfdr'
@@ -19,6 +23,7 @@ bcrypt = Bcrypt(app)
 # configuring my sqlite
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
+ckeditor = CKEditor(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'

@@ -34,7 +34,7 @@ def new_post():
     if request.method == 'POST':
         title = request.form.get('title')
         category = request.form.get('category')
-        content = request.form.get('content')
+        content = request.form.get('ckeditor')
         date_posted = datetime.now()
         image = request.files.get('image')
         user_id = current_user.id
@@ -49,3 +49,13 @@ def new_post():
         db.session.commit()
         return redirect(url_for('main.index'))
     return render_template('new_post.html')
+
+
+
+
+
+# View post
+@posts.route('/post_details/<int:post_id>', methods=['GET', 'POST'])
+def post_details(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post_details.html', post=post)

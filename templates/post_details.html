@@ -10,18 +10,22 @@
    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
    <!-- CSS here -->
-   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-   <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-   <link rel="stylesheet" href="assets/css/ticker-style.css">
-   <link rel="stylesheet" href="assets/css/flaticon.css">
-   <link rel="stylesheet" href="assets/css/slicknav.css">
-   <link rel="stylesheet" href="assets/css/animate.min.css">
-   <link rel="stylesheet" href="assets/css/magnific-popup.css">
-   <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-   <link rel="stylesheet" href="assets/css/themify-icons.css">
-   <link rel="stylesheet" href="assets/css/slick.css">
-   <link rel="stylesheet" href="assets/css/nice-select.css">
-   <link rel="stylesheet" href="assets/css/style.css">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.min.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/ticker-style.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/flaticon.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/slicknav.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.min.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/magnific-popup.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome-all.min.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/themify-icons.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/slick.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/nice-select.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+   <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -31,7 +35,7 @@
          <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-               <img src="assets/img/logo/logo.png" alt="">
+               <img src="{{ url_for('static', filename='assets/img/amebo.png') }}" alt="">
             </div>
          </div>
    </div>
@@ -39,95 +43,100 @@
 <!-- Preloader Start -->
 <header>
    <!-- Header Start -->
-   <div class="header-area">
-         <div class="main-header ">
-            <div class="header-top black-bg d-none d-sm-block">
+   <div class="header-area" >
+       <div class="main-header ">
+           <div class="header-top black-bg d-none d-sm-block">
                <div class="container">
-                  <div class="col-xl-12">
-                     <div class="row d-flex justify-content-between align-items-center">
+                   <div class="col-xl-12">
+                       <div class="row d-flex justify-content-between align-items-center">
                            <div class="header-info-left">
-                              <ul>     
-                                 <li class="title"><span class="flaticon-energy"></span> trending-title</li>
-                                 <li>Class property employ ancho red multi level mansion</li>
-                              </ul>
+                               <ul>     
+                                   <li class="title"><span class="flaticon-energy"></span> trending-title</li>
+                                   <li>Class property employ ancho red multi level mansion</li>
+                               </ul>
                            </div>
                            <div class="header-info-right">
-                              <ul class="header-date">
-                                 <li><span class="flaticon-calendar"></span> +880166 253 232</li>
-                              </ul>
+                               <ul class="header-date">
+                                   <li><span class="flaticon-calendar"></span> +880166 253 232</li>
+                               </ul>
                            </div>
-                     </div>
-                  </div>
+                       </div>
+                   </div>
                </div>
-            </div>
-            <div class="header-mid gray-bg">
+           </div>
+           <div class="header-mid gray-bg">
                <div class="container">
-                  <div class="row d-flex align-items-center">
-                     <!-- Logo -->
-                     <div class="col-xl-3 col-lg-3 col-md-3 d-none d-md-block">
+                   <div class="row d-flex align-items-center">
+                       <!-- Logo -->
+                       <div class="col-xl-3 col-lg-3 col-md-3 d-none d-md-block">
                            <div class="logo">
-                              <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                               <a href="{{ url_for('main.index')}}"><img src="{{ url_for('static', filename='assets/img/amebo.png')}}" alt="" style="width: 80px; height: 80px;"></a>
                            </div>
-                     </div>
-                     <div class="col-xl-9 col-lg-9 col-md-9">
+                       </div>
+                       <div class="col-xl-9 col-lg-9 col-md-9">
                            <div class="header-banner f-right ">
-                              <img src="assets/img/gallery/header_card.png" alt="">
+                               <img src="{{ url_for('static', filename='assets/img/gallery/header_card.png')}}" alt="">
                            </div>
-                     </div>
-                  </div>
+                       </div>
+                   </div>
                </div>
-            </div>
-            <div class="header-bottom header-sticky">
-                  <div class="container">
-                     <div class="row align-items-center">
-                        <div class="col-xl-8 col-lg-8 col-md-12 header-flex">
+           </div>
+           <div class="header-bottom header-sticky" style="background-color: purple;">
+               <div class="container">
+                   <div class="row align-items-center">
+                       <div class="col-xl-8 col-lg-8 col-md-12 header-flex">
                            <!-- sticky -->
                            <div class="sticky-logo">
-                              <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                               <a href="{{ url_for('main.index')}}"><img src="{{ url_for('static', filename='assets/img/amebo.png')}}" alt="" ></a>
                            </div>
                            <!-- Main-menu -->
-                           <div class="main-menu d-none d-md-block">
+                           <div class="main-menu d-none d-md-block" style="background-color: purple;">
                               <nav>                  
-                                 <ul id="navigation">
-                                       <li><a href="index.html">Home</a></li>
-                                       <li><a href="about.html">about</a></li>
-                                       <li><a href="categori.html">Category</a></li>
-                                       <li><a href="latest_news.html">Latest News</a></li>
-                                       <li><a href="#">Pages</a>
-                                          <ul class="submenu">
-                                             <li><a href="blog.html">Blog</a></li>
-                                             <li><a href="blog_details.html">Blog Details</a></li>
-                                             <li><a href="elements.html">Element</a></li>
-                                          </ul>
-                                       </li>
-                                       <li><a href="contact.html">Contact</a></li>
-                                 </ul>
+                                  <ul id="navigation">
+                                      <li><a href="{{ url_for('main.index')}}">Home</a></li>
+                                      <!-- <li><a href="about.html">about</a></li> -->
+                                      <li><a href="categori.html">Category</a></li>
+                                     
+                                      
+                                      
+                                      {% if current_user.admin %}
+                                      <li><a href="{{url_for('posts.new_post')}}" >New Post</a></li>
+                                      {% endif %}
+
+                                      {% if current_user.is_authenticated %}
+                                      <li><a href="{{url_for('main.logout')}}">Logout</a></li>
+                                      {% else %}
+                                      <li><a href="#" onclick="document.getElementById('id01').style.display='block'"">Login</a></li>
+                                      <li><a href="#" onclick="document.getElementById('id02').style.display='block'"">Register</a></li>
+                                      {% endif %}
+
+                                  </ul>
                               </nav>
-                           </div>
-                        </div>             
-                        <div class="col-xl-4 col-lg-4 col-md-4">
+                          </div>
+                       </div>             
+                       <div class="col-xl-4 col-lg-4 col-md-4">
                            <div class="header-right f-right d-none d-lg-block">
-                              <!-- Heder social -->
-                              <ul class="header-social">    
-                                 <li><a href="https://www.fb.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
-                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                 <li> <a href="#"><i class="fab fa-youtube"></i></a></li>
-                              </ul>
-                              <!-- Search Nav -->
-                              <div class="nav-search search-switch">
-                                 <i class="fa fa-search"></i>
-                              </div>
+                               <!-- Heder social -->
+                               <ul class="header-social">    
+                                   <li><a href="https://www.fb.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
+                                   <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                   <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                   <li> <a href="#"><i class="fab fa-youtube"></i></a></li>
+                               </ul>
+                               <!-- Search Nav -->
+                               <div class="nav-search search-switch">
+                                   <i class="fa fa-search"></i>
+                               </div>
                            </div>
-                        </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
+                       </div>
+                       <!-- Mobile Menu -->
+                       <div class="col-12">
                            <div class="mobile_menu d-block d-md-none"></div>
-                        </div>
-                     </div>
-                  </div>
-            </div>
-         </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
    </div>
    <!-- Header End -->
 </header>
@@ -139,46 +148,20 @@
             <div class="col-lg-8 posts-list">
                <div class="single-post">
                   <div class="feature-img">
-                     <img class="img-fluid" src="assets/img/blog/single_blog_1.png" alt="">
+                     <img class="img-fluid" src="{{post.image}}" alt="">
                   </div>
                   <div class="blog_details">
-                     <h2>Second divided from form fish beast made every of seas
-                        all gathered us saying he our
+                     <h2>
+                        {{post.title}}
                      </h2>
                      <ul class="blog-info-link mt-3 mb-4">
-                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i>{{ post.category }}</a></li>
                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                      </ul>
                      <p class="excert">
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower
+                        {{post.content|safe}}
                      </p>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower to actually sit through a
-                        self-imposed MCSE training. who has the willpower to actually
-                     </p>
-                     <div class="quote-wrapper">
-                        <div class="quotes">
-                           MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                           should have to spend money on boot camp when you can get the MCSE study materials yourself at
-                           a fraction of the camp price. However, who has the willpower to actually sit through a
-                           self-imposed MCSE training.
-                        </div>
-                     </div>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower
-                     </p>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower to actually sit through a
-                        self-imposed MCSE training. who has the willpower to actually
-                     </p>
+                     
                   </div>
                </div>
                <div class="navigation-top">
@@ -553,7 +536,7 @@
                         <div class="single-footer-caption mb-30">
                               <!-- logo -->
                               <div class="footer-logo">
-                                 <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                 <a href="{{ url_for('main.index')}}"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                               </div>
                               <div class="footer-tittle">
                                  <div class="footer-pera">
@@ -644,39 +627,39 @@
 
    <!-- All JS Custom Plugins Link Here here -->
    
-   <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+   <script src="{{ url_for('static', filename='/assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
    <!-- Jquery, Popper, Bootstrap -->
-   <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-   <script src="./assets/js/popper.min.js"></script>
-   <script src="./assets/js/bootstrap.min.js"></script>
+   <script src="{{ url_for('static', filename='/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/popper.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/bootstrap.min.js')}}"></script>
    <!-- Jquery Mobile Menu -->
-   <script src="./assets/js/jquery.slicknav.min.js"></script>
+   <script src="{{ url_for('static', filename='/assets/js/jquery.slicknav.min.js') }}"></script>
 
-      <!-- Jquery Slick , Owl-Carousel Plugins -->
-   <script src="./assets/js/owl.carousel.min.js"></script>
-   <script src="./assets/js/slick.min.js"></script>
+   <!-- Jquery Slick , Owl-Carousel Plugins -->
+   <script src="{{ url_for('static', filename='/assets/js/owl.carousel.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/slick.min.js') }}"></script>
    <!-- Date Picker -->
-   <script src="./assets/js/gijgo.min.js"></script>
+   <script src="{{ url_for('static', filename='/assets/js/gijgo.min.js') }}"></script>
    <!-- One Page, Animated-HeadLin -->
-   <script src="./assets/js/wow.min.js"></script>
-      <script src="./assets/js/animated.headline.js"></script>
-   <script src="./assets/js/jquery.magnific-popup.js"></script>
+   <script src="{{ url_for('static', filename='/assets/js/wow.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/animated.headline.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/jquery.magnific-popup.js') }}"></script>
 
-      <!-- Scrollup, nice-select, sticky -->
-   <script src="./assets/js/jquery.scrollUp.min.js"></script>
-   <script src="./assets/js/jquery.nice-select.min.js"></script>
-   <script src="./assets/js/jquery.sticky.js"></script>
+   <!-- Scrollup, nice-select, sticky -->
+   <script src="{{ url_for('static', filename='/assets/js/jquery.scrollUp.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/jquery.nice-select.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/jquery.sticky.js') }}"></script>
    
    <!-- contact js -->
-   <script src="./assets/js/contact.js"></script>
-   <script src="./assets/js/jquery.form.js"></script>
-   <script src="./assets/js/jquery.validate.min.js"></script>
-   <script src="./assets/js/mail-script.js"></script>
-   <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+   <script src="{{ url_for('static', filename='/assets/js/contact.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/jquery.form.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/jquery.validate.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/mail-script.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/jquery.ajaxchimp.min.js') }}"></script>
    
    <!-- Jquery Plugins, main Jquery -->	
-   <script src="./assets/js/plugins.js"></script>
-   <script src="./assets/js/main.js"></script>
+   <script src="{{ url_for('static', filename='/assets/js/plugins.js') }}"></script>
+   <script src="{{ url_for('static', filename='/assets/js/main.js') }}"></script>
       
 </body>
 </html>
