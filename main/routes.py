@@ -13,8 +13,11 @@ def index():
 
     posts = Post.query.order_by(Post.date_posted.desc()).all()
 
+    
+
 
     latest_fashion_post = next((post for post in posts if post.category == 'Fashion and Beauty'), None)
+    latest_tech = next((post for post in posts if post.category == 'Technology'), None)
 
     alert = session.pop('alert', None)
     bg_color = session.pop('bg_color', None)
@@ -49,7 +52,7 @@ def index():
         else:
             session['alert'] = 'Invalid username or password'
 
-    return render_template('index.html', alert=alert, bg_color=bg_color, posts=posts, fashion_post=latest_fashion_post)
+    return render_template('index.html', alert=alert, bg_color=bg_color, posts=posts, fashion_post=latest_fashion_post, tech=latest_tech)
 
 
 
@@ -94,5 +97,8 @@ def logout():
 
 @main.route('/category', methods=['GET', 'POST'])
 def category():
-    
-    return render_template('category.html')
+    category = request.args.get('category', 'Sports')
+    # Get all sports news
+    posts = Post.query.filter_by(category=category).order_by(Post.date_posted.desc()).limit(8).all()
+    print(posts, 'ppppppp')
+    return render_template('category.html', posts=posts)

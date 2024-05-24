@@ -58,4 +58,7 @@ def new_post():
 @posts.route('/post_details/<int:post_id>', methods=['GET', 'POST'])
 def post_details(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('post_details.html', post=post)
+
+    # Recent posts limit to 4
+    recent_posts = Post.query.order_by(Post.date_posted.desc()).limit(10).all()
+    return render_template('post_details.html', post=post, recent_posts=recent_posts)

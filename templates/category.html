@@ -26,6 +26,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+
 </head>
 
 <body>
@@ -45,25 +48,6 @@
     <!-- Header Start -->
     <div class="header-area">
         <div class="main-header ">
-            <div class="header-top black-bg d-none d-sm-block">
-                <div class="container">
-                    <div class="col-xl-12">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="header-info-left">
-                                <ul>     
-                                    <li class="title"><span class="flaticon-energy"></span> trending-title</li>
-                                    <li>Class property employ ancho red multi level mansion</li>
-                                </ul>
-                            </div>
-                            <div class="header-info-right">
-                                <ul class="header-date">
-                                    <li><span class="flaticon-calendar"></span> +880166 253 232</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="header-mid gray-bg">
                 <div class="container">
                     <div class="row d-flex align-items-center">
@@ -87,7 +71,7 @@
                         <div class="col-xl-8 col-lg-8 col-md-12 header-flex">
                             <!-- sticky -->
                             <div class="sticky-logo">
-                                <a href="{{ url_for('main.index')}}"><img src="{{ url_for('static', filename='assets/img/amebo.png')}}" alt=""></a>
+                                <!-- <a href="{{ url_for('main.index')}}"><img src="{{ url_for('static', filename='assets/img/amebo.png')}}" alt=""></a> -->
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block" style="background-color: purple;">
@@ -150,35 +134,13 @@
                         <!-- Heading & Nav Button -->
                             <div class="row justify-content-between align-items-end mb-15">
                                 <div class="col-xl-4">
-                                    <div class="section-tittle mb-30" style="border: 1px solid red;">
+                                    <div class="section-tittle mb-30">
                                         <h3>Categories</h3>
-                                        <nav>                                                 
-                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sports</a>
-                                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Entertainment</a>
-                                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Health</a>
-                                                <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Science</a>
-                                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Sex and Relationship</a>
-
-                                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Crime</a>
-
-                                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false"> Politics</a>
-
-                                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Religion</a>
-
-                                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false"> Education</a>
-
-                                                <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false"> Fasion</a>
-                                            </div>
-                                        </nav>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-xl-8 col-md-9">
-                                    <div class="properties__button">
-                                        <!--Nav Button  -->                                            
-                                        
-                                        <!--End Nav Button  -->
-                                    </div>
+                                   
                                 </div>
                             </div>
                             <!-- Tab content -->
@@ -189,84 +151,24 @@
                                         <!-- card one -->
                                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">       
                                             <div class="row">
+                                                {% for post in posts %}
                                                 <div class="col-xl-6 col-lg-6 col-md-6">
                                                     <div class="whats-news-single mb-40 mb-40">
                                                         <div class="whates-img">
-                                                            <img src="assets/img/gallery/whats_news_details1.png" alt="">
+                                                            <img src="{{ post.image}}" alt="" style="height: 250px; object-fit: cover;">
                                                         </div>
                                                         <div class="whates-caption whates-caption2">
-                                                            <h4><a href="#">Secretart for Economic Air
-                                                                plane that looks like</a></h4>
-                                                            <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                            <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
+                                                            <h4><a href="{{ url_for('posts.post_details', post_id=post.id)}}">{{ post.title}}</a></h4>
+                                                            <span>{{ post.date_posted.strftime('%B, %d, %Y') }}</span>
+                                                            <p>{{ post.content|safe|truncate(100)}}</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                                    <div class="whats-news-single mb-40 mb-40">
-                                                        <div class="whates-img">
-                                                            <img src="assets/img/gallery/whats_news_details2.png" alt="">
-                                                        </div>
-                                                        <div class="whates-caption whates-caption2">
-                                                            <h4><a href="#">Secretart for Economic Air
-                                                                plane that looks like</a></h4>
-                                                            <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                            <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                                    <div class="whats-news-single mb-40 mb-40">
-                                                        <div class="whates-img">
-                                                            <img src="assets/img/gallery/whats_news_details3.png" alt="">
-                                                        </div>
-                                                        <div class="whates-caption whates-caption2">
-                                                            <h4><a href="#">Secretart for Economic Air
-                                                                plane that looks like</a></h4>
-                                                            <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                            <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                                    <div class="whats-news-single mb-40 mb-40">
-                                                        <div class="whates-img">
-                                                            <img src="assets/img/gallery/whats_news_details4.png" alt="">
-                                                        </div>
-                                                        <div class="whates-caption whates-caption2">
-                                                            <h4><a href="#">Secretart for Economic Air
-                                                                plane that looks like</a></h4>
-                                                            <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                            <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                                    <div class="whats-news-single mb-40 mb-40">
-                                                        <div class="whates-img">
-                                                            <img src="assets/img/gallery/whats_news_details5.png" alt="">
-                                                        </div>
-                                                        <div class="whates-caption whates-caption2">
-                                                            <h4><a href="#">Secretart for Economic Air
-                                                                plane that looks like</a></h4>
-                                                            <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                            <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                                    <div class="whats-news-single mb-40 mb-40">
-                                                        <div class="whates-img">
-                                                            <img src="assets/img/gallery/whats_news_details6.png" alt="">
-                                                        </div>
-                                                        <div class="whates-caption whates-caption2">
-                                                            <h4><a href="#">Secretart for Economic Air
-                                                                plane that looks like</a></h4>
-                                                            <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                            <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
+                                                
+                                                
+                                               
+                                              
                                             </div>
                                         </div>
                                         <!-- Card two -->
@@ -609,44 +511,86 @@
                     </div>
                     <div class="col-lg-4">
                         <!-- Flow Socail -->
-                        <div class="single-follow mb-45">
-                            <div class="single-box">
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">  
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div> 
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                    <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
-                                <div class="follow-us d-flex align-items-center">
-                                    <div class="follow-social">
-                                        <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
-                                    </div>
-                                    <div class="follow-count">
-                                        <span>8,045</span>
-                                        <p>Fans</p>
-                                    </div>
-                                </div>
+                        <div class="single-follow mb-45" style="height: auto;">
+                            <div class="blog_right_sidebar" >
+                                <aside class="single_sidebar_widget post_category_widget" style="background-color: white;">
+                                    <h2 class="widget_title" style="font-size: 29px;">Category</h2>
+                                    <ul class="list cat-list">
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Sports')}}" class="d-flex">
+                                             <p>Sports</p>&nbsp;
+                                             <p>(37)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Entertainment')}}" class="d-flex">
+                                             <p>Entertainment</p>&nbsp;
+                                             <p>(10)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Health')}}" class="d-flex">
+                                             <p>Health</p>&nbsp;
+                                             <p>(3)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Technology')}}" class="d-flex">
+                                             <p>Technology</p>&nbsp;
+                                             <p>(11)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Science')}}" class="d-flex">
+                                             <p>Science</p>&nbsp;
+                                             <p>(21)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Business')}}" class="d-flex">
+                                             <p>Business</p>&nbsp;
+                                             <p>(21)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Sex and Relationship')}}" class="d-flex">
+                                             <p>Sex and Relationship</p>&nbsp;
+                                             <p>(21)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Crime')}}" class="d-flex">
+                                             <p>Crime</p>&nbsp;
+                                             <p>(21)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Politics')}}" class="d-flex">
+                                             <p>Politics</p>&nbsp;
+                                             <p>(21)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Religion')}}" class="d-flex">
+                                             <p>Religion</p>&nbsp;
+                                             <p>(21)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Education and Career')}}" class="d-flex">
+                                             <p>Education and Career</p>&nbsp;
+                                             <p>(21)</p>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{{ url_for('main.category', category='Fashion and Beauty')}}" class="d-flex">
+                                             <p>Fashion and Beauty</p>&nbsp;
+                                             <p>(21)</p>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </aside>
+                                 
                             </div>
                         </div>
                         <!-- New Poster -->
@@ -658,37 +602,8 @@
         </div>
     </div>
     <!-- About US End -->
-    <!--Start pagination -->
-    <div class="pagination-area  gray-bg pb-45">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="single-wrap">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                            <li class="page-item"><a class="page-link" href="#">
-                                <!-- SVG icon -->
-                                <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="15px">
-                                    <path fill-rule="evenodd"  fill="rgb(221, 221, 221)" d="M8.142,13.118 L6.973,14.135 L0.127,7.646 L0.127,6.623 L6.973,0.132 L8.087,1.153 L2.683,6.413 L23.309,6.413 L23.309,7.856 L2.683,7.856 L8.142,13.118 Z"/>
-                                    </svg>
-                            </span></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                            <li class="page-item"><a class="page-link" href="#">
-                                <!-- SVG iocn -->
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="15px">
-                                <path fill-rule="evenodd"  fill="rgb(255, 11, 11)" d="M31.112,13.118 L32.281,14.136 L39.127,7.646 L39.127,6.624 L32.281,0.132 L31.167,1.154 L36.571,6.413 L0.491,6.413 L0.491,7.857 L36.571,7.857 L31.112,13.118 Z"/>
-                                </svg>
-                            </span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End pagination  -->
+    
+   
 </main>
 <footer>
     <!-- Footer Start-->
@@ -701,13 +616,13 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="{{ url_for('main.index')}}"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                    <a href="{{ url_for('main.index')}}"><img src="{{ url_for('static', filename='assets/img/amebo.png')}}" alt="" style="width: 40px; height: 40px;"></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p class="info1">Lorem ipsum dolor sit amet, nsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <p class="info2">198 West 21th Street, Suite 721 New York,NY 10010</p>
-                                        <p class="info2">Phone: +95 (0) 123 456 789 Cell: +95 (0) 123 456 789</p>
+                                        <p class="info1">Welcome to Amebo News your number one source for breaking news, where we leave no stone unturned.</p>
+                                        <p class="info2"><i class="fa-solid fa-location-dot" style="color: white;"></i> &nbsp; 4b Idowu Martins Off Adeola Odeku Victoria Island, Lagos</p>
+                                        <p class="info2">Phone: +81 (4) 010 4671 Cell: +70 (1) 856 2146</p>
                                 </div>
                                 </div>
                             </div>
@@ -767,9 +682,7 @@
                         <div class="row d-flex align-items-center">
                             <div class="col-xl-12 ">
                                 <div class="footer-copy-right text-center">
-                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                    <p>Copyright &copy; 2023 Amebo News. All rights reserved </p>
                                 </div>
                             </div>
                         </div>

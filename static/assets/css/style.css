@@ -7,7 +7,7 @@
   color: #13c600;
 }
 .colorr {
-  color: #ed4141;
+  color: purple;
 }
 .bgb {
   background: #0077b5;
@@ -16,7 +16,7 @@
   background: #13c600;
 }
 .bgr {
-  background: #ed4141;
+  background: purple;
 }
 .bgbeg {
   background: #8a3ab9;
@@ -40,7 +40,7 @@
   background: #000;
 }
 .theme-bg {
-  background: #ff2143;
+  background: purple;
 }
 .brand-bg {
   background: #f1f4fa;
@@ -55,7 +55,7 @@
   color: #000;
 }
 .theme-color {
-  color: #ff2143;
+  color: purple;
 }
 .boxed-btn {
   background: #fff;
@@ -359,7 +359,7 @@ hr {
 }
 .owl-carousel:hover .owl-nav div:hover {
   color: #fff;
-  background: #ff3500;
+  background: purple;
 }
 .btn {
   background: #ff2143;
@@ -3085,7 +3085,7 @@ hr {
 .whats-news-area .single-follow .follow-us .follow-count,
 .about-area2 .single-follow .follow-us .follow-count,
 .contact-section .single-follow .follow-us .follow-count {
-  padding-left: 15px;
+  /* padding-left: 15px; */
 }
 .whats-news-area .single-follow .follow-us .follow-count span,
 .about-area2 .single-follow .follow-us .follow-count span,
