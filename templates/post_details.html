@@ -27,6 +27,8 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
 <body>
@@ -326,92 +328,90 @@
 <footer>
    <!-- Footer Start-->
    <div class="footer-main footer-bg">
-      <div class="footer-area footer-padding">
-         <div class="container">
-            <div class="row d-flex justify-content-between">
-                  <div class="col-xl-3 col-lg-3 col-md-5 col-sm-8">
-                     <div class="single-footer-caption mb-50">
-                        <div class="single-footer-caption mb-30">
-                              <!-- logo -->
-                              <div class="footer-logo">
-                                 <a href="{{ url_for('main.index')}}"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
-                              </div>
-                              <div class="footer-tittle">
-                                 <div class="footer-pera">
-                                    <p class="info1">Lorem ipsum dolor sit amet, nsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    <p class="info2">198 West 21th Street, Suite 721 New York,NY 10010</p>
-                                    <p class="info2">Phone: +95 (0) 123 456 789 Cell: +95 (0) 123 456 789</p>
-                              </div>
-                              </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
-                     <div class="single-footer-caption mb-50">
-                        <div class="footer-tittle">
-                              <h4>Popular post</h4>
-                        </div>
-                        <!-- Popular post -->
-                        <div class="whats-right-single mb-20">
-                              <div class="whats-right-img">
-                                 <img src="assets/img/gallery/footer_post1.png" alt="">
-                              </div>
-                              <div class="whats-right-cap">
-                                 <h4><a href="details.html">Scarlett’s disappointment at latest accolade</a></h4>
-                                 <p>Jhon  |  2 hours ago</p> 
-                              </div>
-                        </div>
-                        <!-- Popular post -->
-                        <div class="whats-right-single mb-20">
-                              <div class="whats-right-img">
-                                 <img src="assets/img/gallery/footer_post2.png" alt="">
-                              </div>
-                              <div class="whats-right-cap">
-                                 <h4><a href="details.html">Scarlett’s disappointment at latest accolade</a></h4>
-                                 <p>Jhon  |  2 hours ago</p> 
-                              </div>
-                        </div>
-                        <!-- Popular post -->
-                        <div class="whats-right-single mb-20">
-                              <div class="whats-right-img">
-                                 <img src="assets/img/gallery/footer_post3.png" alt="">
-                              </div>
-                              <div class="whats-right-cap">
-                                 <h4><a href="details.html">Scarlett’s disappointment at latest accolade</a></h4>
-                                 <p>Jhon  |  2 hours ago</p> 
-                              </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
-                     <div class="single-footer-caption mb-50">
-                        <div class="banner">
-                              <img src="assets/img/gallery/body_card4.png" alt="">
-                        </div>
-                     </div>
-                  </div>
-            </div>
-         </div>
-      </div>
-      <!-- footer-bottom aera -->
-      <div class="footer-bottom-area footer-bg">
-         <div class="container">
-            <div class="footer-border">
-                     <div class="row d-flex align-items-center">
-                        <div class="col-xl-12 ">
-                              <div class="footer-copy-right text-center">
-                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                              </div>
-                        </div>
-                     </div>
-            </div>
-         </div>
-      </div>
+       <div class="footer-area footer-padding">
+           <div class="container">
+               <div class="row d-flex justify-content-between">
+                   <div class="col-xl-3 col-lg-3 col-md-5 col-sm-8">
+                       <div class="single-footer-caption mb-50">
+                           <div class="single-footer-caption mb-30">
+                               <!-- logo -->
+                               <div class="footer-logo">
+                                   <a href="{{ url_for('main.index')}}"><img src="{{ url_for('static', filename='assets/img/amebo.png')}}" alt="" style="width: 40px; height: 40px;"></a>
+                               </div>
+                               <div class="footer-tittle">
+                                   <div class="footer-pera">
+                                       <p class="info1">Welcome to Amebo News your number one source for breaking news, where we leave no stone unturned.</p>
+                                       <p class="info2"><i class="fa-solid fa-location-dot"></i> &nbsp; 4b Idowu Martins Off Adeola Odeku Victoria Island, Lagos</p>
+                                       <p class="info2">Phone: +81 (4) 010 4671 Cell: +70 (1) 856 2146</p>
+                               </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
+                       <div class="single-footer-caption mb-50">
+                           <div class="footer-tittle">
+                               <h4>Recent posts</h4>
+                           </div>
+                           <!-- Popular post -->
+                           <div class="whats-right-single mb-20">
+                               <div class="whats-right-img">
+                                   <img src="" alt="">
+                               </div>
+                               <div class="whats-right-cap">
+                                   
+                                   <p>Jhon  |  2 hours ago</p> 
+                               </div>
+                           </div>
+                           <!-- Popular post -->
+                           <div class="whats-right-single mb-20">
+                               <div class="whats-right-img">
+                                   
+                               </div>
+                               <div class="whats-right-cap">
+                                   
+                                   <p>Jhon  |  2 hours ago</p> 
+                               </div>
+                           </div>
+                           <!-- Popular post -->
+                           <div class="whats-right-single mb-20">
+                               <div class="whats-right-img">
+                                   <img src="assets/img/gallery/footer_post3.png" alt="">
+                               </div>
+                               <div class="whats-right-cap">
+                                   <h4><a href="details.html">Scarlett’s disappointment at latest accolade</a></h4>
+                                   <p>Jhon  |  2 hours ago</p> 
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                       <div class="single-footer-caption mb-50">
+                           <div class="banner">
+                               <img src="assets/img/gallery/body_card4.png" alt="">
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <!-- footer-bottom aera -->
+       <div class="footer-bottom-area footer-bg">
+           <div class="container">
+               <div class="footer-border">
+                       <div class="row d-flex align-items-center">
+                           <div class="col-xl-12 ">
+                               <div class="footer-copy-right text-center">
+                                   <p>Copyright &copy; 2023 Amebo News. All rights reserved </p>
+                               </div>
+                           </div>
+                       </div>
+               </div>
+           </div>
+       </div>
    </div>
    <!-- Footer End-->
-</footer>
+ </footer>
 <!-- Search model Begin -->
 <div class="search-model-box">
    <div class="d-flex align-items-center h-100 justify-content-center">

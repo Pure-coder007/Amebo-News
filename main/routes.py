@@ -18,6 +18,7 @@ def index():
 
     latest_fashion_post = next((post for post in posts if post.category == 'Fashion and Beauty'), None)
     latest_tech = next((post for post in posts if post.category == 'Technology'), None)
+    latest_sports = next((post for post in posts if post.category == 'Sports'), None)
 
     alert = session.pop('alert', None)
     bg_color = session.pop('bg_color', None)
@@ -52,7 +53,7 @@ def index():
         else:
             session['alert'] = 'Invalid username or password'
 
-    return render_template('index.html', alert=alert, bg_color=bg_color, posts=posts, fashion_post=latest_fashion_post, tech=latest_tech)
+    return render_template('index.html', alert=alert, bg_color=bg_color, posts=posts, fashion_post=latest_fashion_post, tech=latest_tech, latest_sports=latest_sports)
 
 
 
@@ -97,8 +98,14 @@ def logout():
 
 @main.route('/category', methods=['GET', 'POST'])
 def category():
-    category = request.args.get('category', 'Sports')
-    # Get all sports news
+    category = request.args.get('category', 'Sports')  # Default to 'Sports' if no category is specified
     posts = Post.query.filter_by(category=category).order_by(Post.date_posted.desc()).limit(8).all()
-    print(posts, 'ppppppp')
-    return render_template('category.html', posts=posts)
+
+    latest_posts = {}
+    for cat in ['Sports', 'Fashion and Beauty', 'Technology', 'Religion', 'Education and Career', 'Health', 'Science', 'Entertainment', 'Sex and Relationship', 'Crime', 'Politics', 'Education and Carrer']:
+        latest_post = next((post for post in posts if post.category == cat), None)
+        latest_posts[cat] = latest_post
+
+    # Now, latest_posts dictionary contains the latest post for each category, or None if no post was found
+    return render_template('category.html', posts=posts, **latest_posts)
+    return render_template('category.html', posts=posts, latest_fashion_post=latest_fashion_post, latest_tech=latest_tech, latest_sports=latest_sports)
