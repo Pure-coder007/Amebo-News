@@ -114,6 +114,19 @@ def category():
         latest_post = next((post for post in posts if post.category == cat), None)
         latest_posts[cat] = latest_post
 
+    
+    all_posts = Post.query.order_by(Post.date_posted.desc()).all()
+    
+
+    latest_fashion_post = next((p for p in all_posts if p.category == 'Fashion and Beauty'), None)
+    latest_tech = next((p for p in all_posts if p.category == 'Technology'), None)
+    latest_sports = next((p for p in all_posts if p.category == 'Sports'), None)
+    latest_crime = next((p for p in all_posts if p.category == 'Crime'), None)
+    latest_sex_relationship = next((p for p in all_posts if p.category == 'Sex and Relationship'), None)
+    latest_entertainment = next((p for p in all_posts if p.category == 'Entertainment'), None)
+
+    print(latest_sports, latest_crime, latest_sex_relationship, 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
+
     # Now, latest_posts dictionary contains the latest post for each category, or None if no post was found
-    return render_template('category.html', posts=posts, **latest_posts)
+    return render_template('category.html', posts=posts, **latest_posts, latest_fashion_post=latest_fashion_post, latest_tech=latest_tech, latest_sports=latest_sports, latest_crime=latest_crime, latest_sex_relationship=latest_sex_relationship, latest_entertainment=latest_entertainment)
     
