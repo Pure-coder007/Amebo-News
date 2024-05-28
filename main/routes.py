@@ -12,13 +12,21 @@ main = Blueprint('main', __name__)
 def index():
 
     posts = Post.query.order_by(Post.date_posted.desc()).all()
-
+    all_sports = Post.query.filter_by(category='Sports').order_by(Post.date_posted.desc()).limit(5).all()
+    all_crime = Post.query.filter_by(category='Crime').order_by(Post.date_posted.desc()).limit(5).all()
+    all_entertainment = Post.query.filter_by(category='Entertainment').order_by(Post.date_posted.desc()).limit(5).all()
+    all_sex_relationship = Post.query.filter_by(category='Sex and Relationship').order_by(Post.date_posted.desc()).limit(5).all()
     
 
 
     latest_fashion_post = next((post for post in posts if post.category == 'Fashion and Beauty'), None)
     latest_tech = next((post for post in posts if post.category == 'Technology'), None)
     latest_sports = next((post for post in posts if post.category == 'Sports'), None)
+    latest_crime = next((post for post in posts if post.category == 'Crime'), None)
+    latest_entertainment = next((post for post in posts if post.category == 'Entertainment'), None)
+    latest_sex_relationship = next((post for post in posts if post.category == 'Sex and Relationship'), None)
+
+    print(latest_entertainment, 'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT')
 
     alert = session.pop('alert', None)
     bg_color = session.pop('bg_color', None)
@@ -53,7 +61,7 @@ def index():
         else:
             session['alert'] = 'Invalid username or password'
 
-    return render_template('index.html', alert=alert, bg_color=bg_color, posts=posts, fashion_post=latest_fashion_post, tech=latest_tech, latest_sports=latest_sports)
+    return render_template('index.html', alert=alert, bg_color=bg_color, posts=posts, fashion_post=latest_fashion_post, tech=latest_tech, latest_sports=latest_sports, latest_crime=latest_crime, latest_sex_relationship=latest_sex_relationship, latest_entertainment=latest_entertainment, all_sports=all_sports, all_crime=all_crime, all_entertainment=all_entertainment, all_sex_relationship=all_sex_relationship)
 
 
 
@@ -106,6 +114,19 @@ def category():
         latest_post = next((post for post in posts if post.category == cat), None)
         latest_posts[cat] = latest_post
 
+    
+    all_posts = Post.query.order_by(Post.date_posted.desc()).all()
+    
+
+    latest_fashion_post = next((p for p in all_posts if p.category == 'Fashion and Beauty'), None)
+    latest_tech = next((p for p in all_posts if p.category == 'Technology'), None)
+    latest_sports = next((p for p in all_posts if p.category == 'Sports'), None)
+    latest_crime = next((p for p in all_posts if p.category == 'Crime'), None)
+    latest_sex_relationship = next((p for p in all_posts if p.category == 'Sex and Relationship'), None)
+    latest_entertainment = next((p for p in all_posts if p.category == 'Entertainment'), None)
+
+    print(latest_sports, latest_crime, latest_sex_relationship, 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
+
     # Now, latest_posts dictionary contains the latest post for each category, or None if no post was found
-    return render_template('category.html', posts=posts, **latest_posts)
-    return render_template('category.html', posts=posts, latest_fashion_post=latest_fashion_post, latest_tech=latest_tech, latest_sports=latest_sports)
+    return render_template('category.html', posts=posts, **latest_posts, latest_fashion_post=latest_fashion_post, latest_tech=latest_tech, latest_sports=latest_sports, latest_crime=latest_crime, latest_sex_relationship=latest_sex_relationship, latest_entertainment=latest_entertainment)
+    

@@ -59,6 +59,16 @@ def new_post():
 def post_details(post_id):
     post = Post.query.get_or_404(post_id)
 
+    all_posts = Post.query.order_by(Post.date_posted.desc()).all()
+
+    
+    latest_fashion_post = next((p for p in all_posts if p.category == 'Fashion and Beauty'), None)
+    latest_tech = next((p for p in all_posts if p.category == 'Technology'), None)
+    latest_sports = next((p for p in all_posts if p.category == 'Sports'), None)
+    latest_crime = next((p for p in all_posts if p.category == 'Crime'), None)
+    latest_sex_relationship = next((p for p in all_posts if p.category == 'Sex and Relationship'), None)
+    latest_entertainment = next((p for p in all_posts if p.category == 'Entertainment'), None)
+
     # Recent posts limit to 4
     recent_posts = Post.query.order_by(Post.date_posted.desc()).limit(10).all()
-    return render_template('post_details.html', post=post, recent_posts=recent_posts)
+    return render_template('post_details.html', post=post, recent_posts=recent_posts, latest_fashion_post=latest_fashion_post, latest_tech=latest_tech, latest_sports=latest_sports, latest_crime=latest_crime, latest_sex_relationship=latest_sex_relationship, latest_entertainment=latest_entertainment)

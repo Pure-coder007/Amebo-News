@@ -149,88 +149,98 @@
 <footer>
   <!-- Footer Start-->
   <div class="footer-main footer-bg">
-      <div class="footer-area footer-padding">
-          <div class="container">
-              <div class="row d-flex justify-content-between">
-                  <div class="col-xl-3 col-lg-3 col-md-5 col-sm-8">
-                      <div class="single-footer-caption mb-50">
-                          <div class="single-footer-caption mb-30">
-                              <!-- logo -->
-                              <div class="footer-logo">
-                                  <a href="{{ url_for('main.index')}}"><img src="{{ url_for('static', filename='assets/img/amebo.png')}}" alt="" style="width: 40px; height: 40px;"></a>
-                              </div>
-                              <div class="footer-tittle">
-                                  <div class="footer-pera">
-                                      <p class="info1">Welcome to Amebo News your number one source for breaking news, where we leave no stone unturned.</p>
-                                      <p class="info2"><i class="fa-solid fa-location-dot"></i> &nbsp; 4b Idowu Martins Off Adeola Odeku Victoria Island, Lagos</p>
-                                      <p class="info2">Phone: +81 (4) 010 4671 Cell: +70 (1) 856 2146</p>
-                              </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
-                      <div class="single-footer-caption mb-50">
-                          <div class="footer-tittle">
-                              <h4>Recent posts</h4>
-                          </div>
-                          <!-- Popular post -->
-                          <div class="whats-right-single mb-20">
-                              <div class="whats-right-img">
-                                  <img src="" alt="">
-                              </div>
-                              <div class="whats-right-cap">
-                                  
-                                  <p>Jhon  |  2 hours ago</p> 
-                              </div>
-                          </div>
-                          <!-- Popular post -->
-                          <div class="whats-right-single mb-20">
-                              <div class="whats-right-img">
-                                  
-                              </div>
-                              <div class="whats-right-cap">
-                                  
-                                  <p>Jhon  |  2 hours ago</p> 
-                              </div>
-                          </div>
-                          <!-- Popular post -->
-                          <div class="whats-right-single mb-20">
-                              <div class="whats-right-img">
-                                  <img src="assets/img/gallery/footer_post3.png" alt="">
-                              </div>
-                              <div class="whats-right-cap">
-                                  <h4><a href="details.html">Scarlett’s disappointment at latest accolade</a></h4>
-                                  <p>Jhon  |  2 hours ago</p> 
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
-                      <div class="single-footer-caption mb-50">
-                          <div class="banner">
-                              <img src="assets/img/gallery/body_card4.png" alt="">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- footer-bottom aera -->
-      <div class="footer-bottom-area footer-bg">
-          <div class="container">
-              <div class="footer-border">
-                      <div class="row d-flex align-items-center">
-                          <div class="col-xl-12 ">
-                              <div class="footer-copy-right text-center">
-                                  <p>Copyright &copy; 2023 Amebo News. All rights reserved </p>
-                              </div>
-                          </div>
-                      </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="footer-area footer-padding">
+        <div class="container">
+            <div class="row d-flex justify-content-between">
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-8">
+                    <div class="single-footer-caption mb-50">
+                        <div class="single-footer-caption mb-30">
+                            <!-- logo -->
+                            <div class="footer-logo">
+                                <a href="{{ url_for('main.index')}}"><img src="{{ url_for('static', filename='assets/img/amebo.png')}}" alt="" style="width: 40px; height: 40px;"></a>
+                            </div>
+                            <div class="footer-tittle">
+                                <div class="footer-pera">
+                                    <p class="info1">Welcome to Amebo News your number one source for breaking news, where we leave no stone unturned.</p>
+                                    <p class="info2"><i class="fa-solid fa-location-dot"></i> &nbsp; 4b Idowu Martins Off Adeola Odeku Victoria Island, Lagos</p>
+                                    <p class="info2">Phone: +81 (4) 010 4671 Cell: +70 (1) 856 2146</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
+                    <div class="single-footer-caption mb-50">
+                        <div class="footer-tittle">
+                            <h4>Recent posts</h4>
+                        </div>
+                        <!-- Popular post -->
+                        {% if latest_sports %}
+                        <div class="whats-right-single mb-20">
+                            <div class="whats-right-img">
+                                <img src="{{ latest_sports.image }}" alt="" style="width: 70px; height: 60px;">
+                            </div>
+                            <div class="whats-right-cap">
+                                <h4><a href="{{ url_for('posts.post_details', post_id=latest_sports.id) }}">{{ latest_sports.title }}</a></h4>
+                                <p>{{ latest_sports.date_posted.strftime('%B %d, %Y') }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+
+
+                        <!-- Popular post -->
+                        {% if latest_crime %}
+                        <div class="whats-right-single mb-20">
+                            <div class="whats-right-img">
+                                <img src="{{ latest_crime.image }}" alt="" style="width: 70px; height: 60px;">
+                            </div>
+                            <div class="whats-right-cap">
+                                <h4><a href="{{ url_for('posts.post_details', post_id=latest_crime.id) }}">{{ latest_crime.title }}</a></h4>
+                                <p>{{ latest_sports.date_posted.strftime('%B %d, %Y') }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+
+
+                        <!-- Popular post -->
+                        {% if latest_sex_relationship %}
+                        <div class="whats-right-single mb-20">
+                            <div class="whats-right-img">
+                                <img src="{{ latest_sex_relationship.image }}" alt="" style="width: 70px; height: 60px;">
+                            </div>
+                            <div class="whats-right-cap">
+                                <h4><a href="{{ url_for('posts.post_details', post_id=latest_sex_relationship.id) }}">{{ latest_sex_relationship.title }}</a></h4>
+                                <p>{{ latest_sex_relationship.date_posted.strftime('%B %d, %Y') }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                    <div class="single-footer-caption mb-50">
+                        <div class="banner">
+                            <img src="assets/img/gallery/body_card4.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-bottom aera -->
+    <div class="footer-bottom-area footer-bg">
+        <div class="container">
+            <div class="footer-border">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-xl-12 ">
+                            <div class="footer-copy-right text-center">
+                                <p>Copyright &copy; 2023 Amebo News. All rights reserved </p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
   <!-- Footer End-->
 </footer>
 <!-- Search model Begin -->

@@ -47,25 +47,7 @@
     <!-- Header Start -->
     <div class="header-area" >
         <div class="main-header ">
-            <div class="header-top black-bg d-none d-sm-block">
-                <div class="container">
-                    <div class="col-xl-12">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="header-info-left">
-                                <ul>     
-                                    <li class="title"><span class="flaticon-energy"></span> trending-title</li>
-                                    <li>Class property employ ancho red multi level mansion</li>
-                                </ul>
-                            </div>
-                            <div class="header-info-right">
-                                <ul class="header-date">
-                                    <li><span class="flaticon-calendar"></span> +880166 253 232</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="header-mid gray-bg">
                 <div class="container">
                     <div class="row d-flex align-items-center">
@@ -77,7 +59,8 @@
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9">
                             <div class="header-banner f-right ">
-                                <img src="{{ url_for('static', filename='assets/img/gallery/header_card.png')}}" alt="">
+                                <a href="https://www.facebook.com/kingsley.dike.31945?locale=hi_IN"><img src="{{ url_for('static', filename='assets/img/advert3.png')}}" alt="" style="height: 120px;">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -108,8 +91,8 @@
                                         {% if current_user.is_authenticated %}
                                         <li><a href="{{url_for('main.logout')}}">Logout</a></li>
                                         {% else %}
-                                        <li><a href="#" onclick="document.getElementById('id01').style.display='block'"">Login</a></li>
-                                        <li><a href="#" onclick="document.getElementById('id02').style.display='block'"">Register</a></li>
+                                        <li><a href="#" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+                                        <li><a href="#" onclick="document.getElementById('id02').style.display='block'">Register</a></li>
                                         {% endif %}
 
                                     </ul>
@@ -228,7 +211,7 @@
                     <div class="row justify-content-between align-items-end mb-15">
                         <div class="col-xl-4">
                             <div class="section-tittle mb-30">
-                                <h3>Categories</h3>
+                                <h3 style="font-size: 35px;">Popular Posts</h3>
                             </div>
                         </div>
                         <div class="col-xl-8 col-md-9">
@@ -236,11 +219,11 @@
                                 <!--Nav Button  -->                                            
                                 <nav>                                                 
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Lifestyle</a>
-                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Travel</a>
-                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Fashion</a>
-                                        <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Sports</a>
-                                        <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Technology</a>
+                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Sports</a>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Crime</a>
+                                        <!-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Politics</a> -->
+                                        <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Entertainment</a>
+                                        <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Sex And Relationship</a>
                                     </div>
                                 </nav>
                                 <!--End Nav Button  -->
@@ -250,295 +233,178 @@
                     <!-- Tab content -->
                     <div class="row">
                         <div class="col-12">
+
                             <!-- Nav Card -->
                             <div class="tab-content" id="nav-tabContent">
                                 <!-- card one -->
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">       
                                     <div class="row">
                                         <!-- Left Details Caption -->
+                                        {% if latest_sports %}
                                         <div class="col-xl-6 col-lg-12">
                                             <div class="whats-news-single mb-40 mb-40">
                                                 <div class="whates-img">
-                                                    <img src="{{ url_for('static', filename='assets/img/gallery/whats_news_details1.png')}}" alt="">
+                                                    <img src="{{ latest_sports.image }}" alt="" style="width: 100%; height: 270px;">
                                                 </div>
                                                 <div class="whates-caption">
-                                                    <h4><a href="latest_news.html">Secretart for Economic Air plane that looks like</a></h4>
-                                                    <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                    <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
+                                                    <h4><a href="{{url_for('posts.post_details', post_id=latest_sports.id)}}">{{ latest_sports.title }}</a></h4>
+                                                    <span>{{ latest_sports.date_posted.strftime('%B %d, %Y') }}</span>
+                                                    <p>{{ latest_sports.content|truncate(100)|safe }}</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endif %}
+
                                         <!-- Right single caption -->
                                         <div class="col-xl-6 col-lg-12">
                                             <div class="row">
                                                 <!-- single -->
+
+                                                {% for sport in all_sports[1:] %}
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="{{ url_for('static', filename='assets/img/gallery/whats_right_img1.png')}}" alt="">
+                                                            <img src="{{ sport.image }}" alt="" style="width: 150px; height: 100px;">
                                                         </div>
                                                         <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
+                                                            <span class="colorb">SPORTS</span>
+                                                            <h4><a href="{{url_for('posts.post_details', post_id=sport.id)}}">{{ sport.title|truncate(50) }}</a></h4>
+                                                            <p>{{ sport.date_posted.strftime('%B %d, %Y') }}</p> 
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="{{ url_for('static', filename='assets/img/gallery/whats_right_img2.png')}}" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="{{ url_for('static', filename='assets/img/gallery/whats_right_img3.png')}}" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorg">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="{{ url_for('static', filename='assets/img/gallery/whats_right_img4.png')}}" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorr">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Card two -->
+
+                                
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                     <div class="row">
                                         <!-- Left Details Caption -->
+                                        {% if latest_crime %}
                                         <div class="col-xl-6">
                                             <div class="whats-news-single mb-40">
                                                 <div class="whates-img">
-                                                    <img src="{{ url_for('static', filename='assets/img/gallery/whats_right_img2.png')}}" alt="">
+                                                    <img src="{{ latest_crime.image }}" alt="" style="width: 100%; height: 270px;">
                                                 </div>
                                                 <div class="whates-caption">
-                                                    <h4><a href="#">Secretart for Economic Air
-                                                        plane that looks like</a></h4>
-                                                    <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                    <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
+                                                    <h4><a href="{{url_for('posts.post_details', post_id=latest_crime.id)}}">{{ latest_crime.title }}</a></h4>
+                                                    <span>{{ latest_crime.date_posted.strftime('%B %d, %Y') }}</span>
+                                                    <p>{{ latest_crime.content|truncate(100)|safe }}</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endif %}
+
                                         <!-- Right single caption -->
                                         <div class="col-xl-6 col-lg-12">
                                             <div class="row">
                                                 <!-- single -->
+                                                {% for crime in all_crime[1:] %}
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="{{ url_for('static', filename='assets/img/gallery/whats_right_img1.png')}}" alt="">
+                                                            <img src="{{ crime.image }}" alt="" style="width: 150px; height: 100px;">
                                                         </div>
                                                         <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
+                                                            <span class="colorb">CRIME</span>
+                                                            <h4><a href="{{url_for('posts.post_details', post_id=crime.id)}}">{{ crime.title|truncate(50) }}</a></h4>
+                                                            <p>{{ crime.date_posted.strftime('%B %d, %Y') }}</p> 
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="{{ url_for('static', filename='assets/img/gallery/whats_right_img2.png')}}" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="{{ url_for('static', filename='assets/img/gallery/whats_right_img3.png')}}" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorg">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorr">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <!-- Card three -->
                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                     <div class="row">
                                         <!-- Left Details Caption -->
+                                        {% if latest_entertainment %}
                                         <div class="col-xl-6">
                                             <div class="whats-news-single mb-40">
                                                 <div class="whates-img">
-                                                    <img src="assets/img/gallery/whats_right_img4.png" alt="">
+                                                    <img src="{{ latest_entertainment.image }}" alt="" style="width: 100%; height: 270px;">
+                                                    <p>{{ latest_entertainment.date_posted.strftime('%B %d, %Y') }}</p>
                                                 </div>
                                                 <div class="whates-caption">
-                                                    <h4><a href="#">Secretart for Economic Air
-                                                        plane that looks like</a></h4>
-                                                    <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                    <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
+                                                    <h4><a href="{{url_for('posts.post_details', post_id=latest_entertainment.id)}}">{{ latest_entertainment.title|truncate(50) }}</a></h4>
+                                                    <span>{{ latest_entertainment.date_posted.strftime('%B %d, %Y') }}</span>
+                                                    <p>{{ latest_entertainment.content|truncate(100)|safe }}</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endif %}
+
                                         <!-- Right single caption -->
                                         <div class="col-xl-6 col-lg-12">
                                             <div class="row">
                                                 <!-- single -->
+                                                {% for entertainment in all_entertainment[1:] %}
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img1.png" alt="">
+                                                            <img src="{{ entertainment.image }}" alt="" style="width: 150px; height: 100px;">
                                                         </div>
                                                         <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
+                                                            <span class="colorb">ENTERTAINMENT</span>
+                                                            <h4><a href="{{url_for('posts.post_details', post_id=entertainment.id)}}">{{ entertainment.title|truncate(50) }}</a></h4>
+                                                            <p>{{ entertainment.date_posted.strftime('%B %d, %Y') }}</p> 
+                                                            <p>{{ entertainment.content|truncate(100)|safe }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img2.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img3.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorg">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorr">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
+                                               
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- card fure -->
                                 <div class="tab-pane fade" id="nav-last" role="tabpanel" aria-labelledby="nav-last-tab">
                                     <div class="row">
                                         <!-- Left Details Caption -->
+                                        {% if latest_entertainment %}
                                         <div class="col-xl-6">
                                             <div class="whats-news-single mb-40">
                                                 <div class="whates-img">
-                                                    <img src="assets/img/gallery/whats_right_img2.png" alt="">
+                                                    <img src="{{ latest_entertainment.image }}" alt="" style="width: 100%; height: 270px;">
                                                 </div>
                                                 <div class="whates-caption">
-                                                    <h4><a href="#">Secretart for Economic Air
-                                                        plane that looks like</a></h4>
-                                                    <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                    <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
+                                                    <h4><a href="{{url_for('posts.post_details', post_id=latest_entertainment.id)}}">{{ latest_entertainment.title }}</a></h4>
+                                                    <span>{{ latest_entertainment.date_posted.strftime('%B %d, %Y') }}</span>
+                                                    <p>{{ latest_entertainment.content|truncate(100)|safe }}</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endif %}
                                         <!-- Right single caption -->
                                         <div class="col-xl-6 col-lg-12">
                                             <div class="row">
                                                 <!-- single -->
+                                                {% for entertainment in all_entertainment[1:] %}
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img1.png" alt="">
+                                                            <img src="{{ entertainment.image }}" alt="" style="width: 150px; height: 100px;">
                                                         </div>
                                                         <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
+                                                            <span class="colorb">ENTERTAINMENT</span>
+                                                            <h4><a href="{{url_for('posts.post_details', post_id=entertainment.id)}}">{{ entertainment.title|truncate(50) }}</a></h4>
+                                                            <p>{{ entertainment.date_posted.strftime('%B %d, %Y') }}</p> 
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img2.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img3.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorg">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorr">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -547,71 +413,39 @@
                                 <div class="tab-pane fade" id="nav-nav-Sport" role="tabpanel" aria-labelledby="nav-Sports">
                                     <div class="row">
                                         <!-- Left Details Caption -->
+                                        {% if latest_sex_relationship %}
                                         <div class="col-xl-6">
                                             <div class="whats-news-single mb-40">
                                                 <div class="whates-img">
-                                                    <img src="assets/img/gallery/whats_news_details1.png" alt="">
+                                                    <img src="{{latest_sex_relationship.image}}" alt="" style="width: 100%; height: 270px;">
                                                 </div>
                                                 <div class="whates-caption">
-                                                    <h4><a href="#">Secretart for Economic Air
-                                                        plane that looks like</a></h4>
-                                                    <span>by Alice cloe   -   Jun 19, 2020</span>
-                                                    <p>Struggling to sell one multi-million dollar home currently on the market won’t stop actress and singer Jennifer Lopez.</p>
+                                                    <h4><a href="{{url_for('posts.post_details', post_id=latest_sex_relationship.id)}}">{{ latest_sex_relationship.title|truncate(50) }}</a></h4>
+                                                    <span>{{ latest_sex_relationship.date_posted.strftime('%B %d, %Y') }}</span>
+                                                    <p>{{ latest_sex_relationship.content|truncate(100)|safe }}</p>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endif %}
                                         <!-- Right single caption -->
                                         <div class="col-xl-6 col-lg-12">
                                             <div class="row">
                                                 <!-- single -->
+                                                {% for post in all_sex_relationship[1:] %}
                                                 <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
                                                     <div class="whats-right-single mb-20">
                                                         <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img1.png" alt="">
+                                                            <img src="{{post.image}}" alt="" style="width: 150px; height: 100px;">
                                                         </div>
                                                         <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
+                                                            <span class="colorb">SEX AND RELATIONSHIP</span>
+                                                            <h4><a href="{{url_for('posts.post_details', post_id=post.id)}}">{{ post.title|truncate(50) }}</a></h4>
+                                                            <p>{{ post.date_posted.strftime('%B %d, %Y') }}</p> 
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img2.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorb">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img3.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorg">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
-                                                    <div class="whats-right-single mb-20">
-                                                        <div class="whats-right-img">
-                                                            <img src="assets/img/gallery/whats_right_img4.png" alt="">
-                                                        </div>
-                                                        <div class="whats-right-cap">
-                                                            <span class="colorr">FASHION</span>
-                                                            <h4><a href="latest_news.html">Portrait of group of friends ting eat. market in.</a></h4>
-                                                            <p>Jun 19, 2020</p> 
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -623,50 +457,15 @@
                 </div>
                 <!-- Banner -->
                 <div class="banner-one mt-20 mb-30">
-                    <img src="assets/img/gallery/body_card1.png" alt="">
+                    <a href="https://www.facebook.com/kingsley.dike.31945?locale=hi_IN"><img src="{{ url_for('static', filename='assets/img/advert3.png')}}" alt="" style="height: 150px; border-radius: 5px;">
+
                 </div>
                 </div>
                 <div class="col-lg-4">
                     <!-- Flow Socail -->
                     <div class="single-follow mb-45">
-                        <div class="single-box">
-                            <div class="follow-us d-flex align-items-center">
-                                <div class="follow-social">
-                                    <a href="#"><img src="assets/img/news/icon-fb.png" alt=""></a>
-                                </div>
-                                <div class="follow-count">  
-                                    <span>8,045</span>
-                                    <p>Fans</p>
-                                </div>
-                            </div> 
-                            <div class="follow-us d-flex align-items-center">
-                                <div class="follow-social">
-                                    <a href="#"><img src="assets/img/news/icon-tw.png" alt=""></a>
-                                </div>
-                                <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
-                                </div>
-                            </div>
-                                <div class="follow-us d-flex align-items-center">
-                                <div class="follow-social">
-                                    <a href="#"><img src="assets/img/news/icon-ins.png" alt=""></a>
-                                </div>
-                                <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
-                                </div>
-                            </div>
-                            <div class="follow-us d-flex align-items-center">
-                                <div class="follow-social">
-                                    <a href="#"><img src="assets/img/news/icon-yo.png" alt=""></a>
-                                </div>
-                                <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="https://www.facebook.com/kingsley.dike.31945?locale=hi_IN"><img src="{{ url_for('static', filename='assets/img/advert.jpg')}}" alt="" style="width: 100%; height: 300px;"></a>
+                       
                     </div>
                     <!-- Most Recent Area -->
                     <div class="most-recent-area">
@@ -676,36 +475,46 @@
                         </div>
                         <!-- Details -->
                         <div class="most-recent mb-40">
+                            {% if latest_crime %}
                             <div class="most-recent-img">
-                                <img src="assets/img/gallery/most_recent.png" alt="">
+                                <img src="{{ latest_crime.image}}" alt="" style="border-radius: 10px;">
                                 <div class="most-recent-cap">
-                                    <span class="bgbeg">Vogue</span>
-                                    <h4><a href="latest_news.html">What to Wear: 9+ Cute Work <br>
-                                        Outfits to Wear This.</a></h4>
-                                    <p>Jhon  |  2 hours ago</p>
+                                    <span class="bgbeg">Crime</span>
+                                    <h4><a href="{{ url_for('posts.post_details', post_id=latest_crime.id) }}">{{ latest_crime.title|truncate(50) }}
+                                        </a></h4>
+                                    <p>{{ latest_crime.date_posted.strftime('%B %d, %Y') }}</p>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                         <!-- Single -->
-                        <div class="most-recent-single">
-                            <div class="most-recent-images">
-                                <img src="assets/img/gallery/most_recent1.png" alt="">
+                        <div class="most-recent mb-40">
+                            {% if latest_entertainment %}
+                            <div class="most-recent-img">
+                                <img src="{{ latest_entertainment.image}}" alt="" style="width: 100%; height: 200px; border-radius: 10px;">
+                                <div class="most-recent-cap">
+                                    <span class="bgbeg">Entertainment</span>
+                                    <h4><a href="{{ url_for('posts.post_details', post_id=latest_entertainment.id) }}">{{ latest_entertainment.title|truncate(50) }}
+                                        </a></h4>
+                                    <p>{{ latest_entertainment.date_posted.strftime('%B %d, %Y') }}</p>
+                                </div>
                             </div>
-                            <div class="most-recent-capt">
-                                <h4><a href="latest_news.html">Scarlett’s disappointment at latest accolade</a></h4>
-                                <p>Jhon  |  2 hours ago</p>
-                            </div>
+                            {% endif %}
                         </div>
                         <!-- Single -->
-                        <div class="most-recent-single">
-                            <div class="most-recent-images">
-                                <img src="assets/img/gallery/most_recent2.png" alt="">
+                        <!-- <div class="most-recent mb-40">
+                            {% if latest_sex_relationship %}
+                            <div class="most-recent-img">
+                                <img src="{{ latest_sex_relationship.image}}" alt=""  style="width: 100%; height: 200px; border-radius: 10px;">
+                                <div class="most-recent-cap">
+                                    <span class="bgbeg">Sex and Relationship</span>
+                                    <h4><a href="{{ url_for('posts.post_details', post_id=latest_sex_relationship.id) }}">{{ latest_sex_relationship.title|truncate(50) }}
+                                        </a></h4>
+                                    <p>{{ latest_sex_relationship.date_posted.strftime('%B %d, %Y') }}</p>
+                                </div>
                             </div>
-                            <div class="most-recent-capt">
-                                <h4><a href="latest_news.html">Most Beautiful Things to Do in Sidney with Your BF</a></h4>
-                                <p>Jhon  |  3 hours ago</p>
-                            </div>
-                        </div>
+                            {% endif %}
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -720,7 +529,7 @@
                     <!-- Banner -->
                     <div class="col-lg-3">
                         <div class="home-banner2 d-none d-lg-block">
-                            <img src="assets/img/gallery/body_card2.png" alt="">
+                            <a href="https://www.facebook.com/kingsley.dike.31945?locale=hi_IN"><img src="{{ url_for('static', filename='assets/img/advert.jpg')}}" alt="" style="border-radius: 5px; height: 375px;"></a>
                         </div>
                     </div>
                     <div class="col-lg-9">
@@ -738,45 +547,66 @@
                                 <div class="col-lg-12">
                                     <div class="weekly2-news-active d-flex">
                                         <!-- Single -->
+                                        {% if latest_crime %}
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
-                                                <img src="assets/img/gallery/weeklyNews1.png" alt="">
+                                                <img src="{{ latest_crime.image}}" alt="" style="height: 180px;">
                                             </div>
                                             <div class="weekly2-caption">
-                                                <h4><a href="#">Scarlett’s disappointment at latest accolade</a></h4>
-                                                <p>Jhon  |  2 hours ago</p>
+                                                <h4><a href="{{ url_for('posts.post_details', post_id=latest_crime.id)}}">{{ latest_crime.title|truncate(50) }}</a></h4>
+                                                <p>{{ latest_crime.date_posted.strftime('%B %d, %Y') }}</p>
                                             </div>
                                         </div> 
+                                        {% endif %}
                                         <!-- Single -->
+                                        {% if latest_entertainment %}
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
-                                                <img src="assets/img/gallery/weeklyNews2.png" alt="">
+                                                <img src="{{ latest_entertainment.image}}" alt="" style="height: 180px;">
                                             </div>
                                             <div class="weekly2-caption">
-                                                <h4><a href="#">Scarlett’s disappointment at latest accolade</a></h4>
-                                                <p>Jhon  |  2 hours ago</p>
+                                                <h4><a href="{{ url_for('posts.post_details', post_id=latest_entertainment.id)}}">{{ latest_entertainment.title|truncate(50) }}</a></h4>
+                                                <p>{{ latest_entertainment.date_posted.strftime('%B %d, %Y') }}</p>
                                             </div>
                                         </div> 
+                                        {% endif %}
                                         <!-- Single -->
+                                        {% if latest_sports %}
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
-                                                <img src="assets/img/gallery/weeklyNews3.png" alt="">
+                                                <img src="{{ latest_sports.image}}" alt="" style="height: 180px;">
                                             </div>
                                             <div class="weekly2-caption">
-                                                <h4><a href="#">Scarlett’s disappointment at latest accolade</a></h4>
-                                                <p>Jhon  |  2 hours ago</p>
+                                                <h4><a href="{{ url_for('posts.post_details', post_id=latest_sports.id)}}">{{ latest_sports.title|truncate(50) }}</a></h4>
+                                                <p>{{ latest_sports.date_posted.strftime('%B %d, %Y') }}</p>
                                             </div>
                                         </div> 
+                                        {% endif %}
                                         <!-- Single -->
+                                        {% if latest_sex_relationship %}
                                         <div class="weekly2-single">
                                             <div class="weekly2-img">
-                                                <img src="assets/img/gallery/weeklyNews2.png" alt="">
+                                                <img src="{{ latest_sex_relationship.image}}" alt="" style="height: 180px;">
                                             </div>
                                             <div class="weekly2-caption">
-                                                <h4><a href="#">Scarlett’s disappointment at latest accolade</a></h4>
-                                                <p>Jhon  |  2 hours ago</p>
+                                                <h4><a href="{{ url_for('posts.post_details', post_id=latest_sex_relationship.id)}}">{{ latest_sex_relationship.title|truncate(50) }}</a></h4>
+                                                <p>{{ latest_sex_relationship.date_posted.strftime('%B %d, %Y') }}</p>
                                             </div>
                                         </div> 
+                                        {% endif %}
+
+                                         <!-- Single -->
+                                         {% if fashion_post %}
+                                        <div class="weekly2-single">
+                                            <div class="weekly2-img">
+                                                 <img src="{{ fashion_post.image}}" alt="" style="height: 180px;">
+                                            </div>
+                                            <div class="weekly2-caption">
+                                                 <h4><a href="{{ url_for('posts.post_details', post_id=fashion_post.id)}}">{{ fashion_post.title|truncate(50) }}</a></h4>
+                                                 <p>{{ fashion_post.date_posted.strftime('%B %d, %Y') }}</p>
+                                            </div>
+                                        </div> 
+                                         {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -1021,7 +851,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-10">
                     <div class="banner-one">
-                        <img src="assets/img/gallery/body_card3.png" alt="">
+                        <a href="https://www.facebook.com/kingsley.dike.31945?locale=hi_IN"><img src="{{ url_for('static', filename='assets/img/advert3.png')}}" alt="" style="height: 120px;">
+
                     </div>
                 </div>
             </div>
@@ -1058,41 +889,52 @@
                                 <h4>Recent posts</h4>
                             </div>
                             <!-- Popular post -->
+                            {% if latest_sports %}
                             <div class="whats-right-single mb-20">
                                 <div class="whats-right-img">
-                                    <img src="" alt="">
+                                    <img src="{{ latest_sports.image }}" alt="" style="width: 70px; height: 60px;">
                                 </div>
                                 <div class="whats-right-cap">
-                                    
-                                    <p>Jhon  |  2 hours ago</p> 
+                                    <h4><a href="{{ url_for('posts.post_details', post_id=latest_sports.id) }}">{{ latest_sports.title }}</a></h4>
+                                    <p>{{ latest_sports.date_posted.strftime('%B %d, %Y') }}</p>
                                 </div>
                             </div>
+                            {% endif %}
+
+
                             <!-- Popular post -->
+                            {% if latest_crime %}
                             <div class="whats-right-single mb-20">
                                 <div class="whats-right-img">
-                                    
+                                    <img src="{{ latest_crime.image }}" alt="" style="width: 70px; height: 60px;">
                                 </div>
                                 <div class="whats-right-cap">
-                                    
-                                    <p>Jhon  |  2 hours ago</p> 
+                                    <h4><a href="{{ url_for('posts.post_details', post_id=latest_crime.id) }}">{{ latest_crime.title }}</a></h4>
+                                    <p>{{ latest_sports.date_posted.strftime('%B %d, %Y') }}</p>
                                 </div>
                             </div>
+                            {% endif %}
+
+
                             <!-- Popular post -->
+                            {% if latest_sex_relationship %}
                             <div class="whats-right-single mb-20">
                                 <div class="whats-right-img">
-                                    <img src="assets/img/gallery/footer_post3.png" alt="">
+                                    <img src="{{ latest_sex_relationship.image }}" alt="" style="width: 70px; height: 60px;">
                                 </div>
                                 <div class="whats-right-cap">
-                                    <h4><a href="details.html">Scarlett’s disappointment at latest accolade</a></h4>
-                                    <p>Jhon  |  2 hours ago</p> 
+                                    <h4><a href="{{ url_for('posts.post_details', post_id=latest_sex_relationship.id) }}">{{ latest_sex_relationship.title }}</a></h4>
+                                    <p>{{ latest_sex_relationship.date_posted.strftime('%B %d, %Y') }}</p>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
                         <div class="single-footer-caption mb-50">
                             <div class="banner">
-                                <img src="assets/img/gallery/body_card4.png" alt="">
+                                <a href="https://www.facebook.com/kingsley.dike.31945?locale=hi_IN"><img src="{{ url_for('static', filename='assets/img/advert.jpg')}}" alt="" style="width: 100%; height: 300px;"></a>
+
                             </div>
                         </div>
                     </div>
@@ -1480,7 +1322,7 @@ span.psw {
     <script src="{{ url_for('static', filename='/assets/js/main.js') }}"></script>
 
     <style>
-        ..poppins-thin {
+         .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-style: normal;
